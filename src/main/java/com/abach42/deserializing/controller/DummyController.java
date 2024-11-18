@@ -18,11 +18,10 @@ public class DummyController {
     public ResponseEntity<UserProjection> foo() throws JsonMappingException, JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        String basicJson = "{\"type\": \"basic\", \"id\": 1, \"username\": \"johndoe\"}";
+        String basicJson = "{\"type\": \"basic\", \"id\": 1, \"username\": \"johndoe\", \"displayName\": \"name\"}";
 
         UserProjection basicUser = objectMapper.readValue(basicJson, UserProjection.class);
 
-    
 
         return ResponseEntity.ok().body(basicUser);
     }

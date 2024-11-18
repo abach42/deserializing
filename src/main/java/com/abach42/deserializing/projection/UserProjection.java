@@ -2,6 +2,7 @@ package com.abach42.deserializing.projection;
 
 import org.springframework.beans.factory.annotation.Value;
 
+import com.abach42.deserializing.entity.Display;
 import com.abach42.deserializing.entity.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -9,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
-    @JsonSubTypes.Type(value = User.class, name = "basic")
+    @JsonSubTypes.Type(value = User.class, name = "basic"),
+    @JsonSubTypes.Type(value = Display.class, name = "display")
 })
 public interface UserProjection {
     @JsonProperty("id")
@@ -18,6 +20,9 @@ public interface UserProjection {
     @JsonProperty("username")
     String getUsername();
 
+    @JsonProperty("displayname")
     @Value("#{target.username}")
-    String getDisplyName();
+    default String getDisplayName() {
+        return "foobar";
+    }
 }
