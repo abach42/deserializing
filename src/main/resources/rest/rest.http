@@ -4,6 +4,10 @@
 @domain = {{sheme}}://{{host}}:{{port}}
 
 
-### Get token Admin
+### foo
 GET {{domain}}/api/v1/foo HTTP/1.1
+Accept: application/json
+
+### bar
+GET {{domain}}/api/v1/bar HTTP/1.1
 Accept: application/json
