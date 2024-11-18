@@ -1,0 +1,9 @@
+@host = localhost
+@port = 8080
+@sheme = http
+@domain = {{sheme}}://{{host}}:{{port}}
+
+
+### Get token Admin
+GET {{domain}}/api/v1/foo HTTP/1.1
+Accept: application/json
